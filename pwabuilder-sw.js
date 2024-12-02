@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "cache-v4.0.0.0-release";
+const CACHE = "cache-v4.1.0.1-release";
 
 // Import Workbox
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');

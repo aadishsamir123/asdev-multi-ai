@@ -247,6 +247,82 @@ function selectModelBasedOnMessage(message) {
     }
 }
 
+// function showVOverlay() {
+//     document.getElementById("voice-overlay").style.display = "flex";
+//     setTimeout(function() {
+//         document.getElementById("voice-overlay").style.opacity = "1";
+//     }, 1)
+// }
+
+// function hideVOverlay() {
+//     document.getElementById("voice-overlay").style.opacity = "0";
+//     setTimeout(function() {
+//         document.getElementById("voice-overlay").style.display = "none";
+//     }, 500)
+// }
+
+// const startRecordingButton = document.getElementById('startRecording');
+// const canvas = document.getElementById('waveform');
+// const canvasContext = canvas.getContext('2d');
+// let audioContext, analyser, microphone, animationId;
+// let recordedData = []; // To store waveform data
+
+// startRecordingButton.addEventListener('click', async () => {
+//     audioContext = new (window.AudioContext || window.webkitAudioContext)();
+//     analyser = audioContext.createAnalyser();
+
+//     try {
+//         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+//         microphone = audioContext.createMediaStreamSource(stream);
+//         microphone.connect(analyser);
+//         analyser.fftSize = 2048;
+
+//         const dataArray = new Uint8Array(analyser.frequencyBinCount);
+//         drawWaveform(dataArray);
+//     } catch (err) {
+//         console.error('Error accessing microphone:', err);
+//     }
+// });
+
+// function drawWaveform(dataArray) {
+//     animationId = requestAnimationFrame(() => drawWaveform(dataArray));
+
+//     analyser.getByteTimeDomainData(dataArray);
+//     recordedData.push([...dataArray]); // Store the current waveform data
+
+//     // Clear canvas and set background color
+//     canvasContext.fillStyle = '#121212';
+//     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+//     canvasContext.lineWidth = 2;
+//     canvasContext.strokeStyle = '#fff';
+
+//     // Draw each recorded waveform
+//     recordedData.forEach((data, index) => {
+//         const sliceWidth = canvas.width / data.length;
+//         let x = index * sliceWidth; // Start from the right
+
+//         canvasContext.beginPath();
+//         for (let i = 0; i < data.length; i++) {
+//             const v = data[i] / 128.0; // Normalize
+//             const y = v * (canvas.height / 2) + (canvas.height / 2); // Centering
+
+//             if (i === 0) {
+//                 canvasContext.moveTo(x, y);
+//             } else {
+//                 canvasContext.lineTo(x, y);
+//             }
+//             x += sliceWidth;
+//         }
+//         canvasContext.stroke();
+//     });
+
+//     // Remove old data to create scrolling effect
+//     if (recordedData.length * (canvas.width / dataArray.length) > canvas.width) {
+//         recordedData.shift(); // Remove the oldest data
+//     }
+// }
+
 // Send a message and get a response from the AI
 function sendMessage() {
     const userInput = document.getElementById("userInput").value;
