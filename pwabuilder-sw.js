@@ -1,9 +1,11 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "cache-v4.1.1.0-release";
+const CACHE = "cache-v4.2.0.0";
 
 // Import Workbox
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
+);
 
 // Listen for skipWaiting messages (Optional, for future use if needed)
 self.addEventListener("message", (event) => {
@@ -14,8 +16,8 @@ self.addEventListener("message", (event) => {
 
 // Cache strategy: Stale While Revalidate
 workbox.routing.registerRoute(
-  new RegExp('/*'),
+  new RegExp("/*"),
   new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
+    cacheName: CACHE,
   })
 );

@@ -2,60 +2,62 @@
 /* Copyright (c) 2024 Aadish Samir */
 /* See the LICENSE file in the root of this repository for details. */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px); /* Optional: Slightly move up from below */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: Slightly move up from below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .rn {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    overflow: auto; /* Ensure the body scrolls */
-    display: flex;
-    flex-direction: column; /* Arrange items vertically */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  overflow: auto; /* Ensure the body scrolls */
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 /* Ensure the chat container takes up the full height of the screen */
-html, body {
-    height: 100%;
-    margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 /* Overlay styles
@@ -122,393 +124,424 @@ html, body {
 } */
 
 #chatContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
 }
 
 #chatLog {
-    flex: 1; /* Takes up all available space above the input field */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    overflow-y: auto;
-    background-color: #1e1e1e; /* Background color for chat area */
+  flex: 1; /* Takes up all available space above the input field */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #1e1e1e; /* Background color for chat area */
 }
 
 #userInputContainer {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff; /* Background color for input area */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff; /* Background color for input area */
 }
 
 #userInput {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 #sendButton {
-    margin-left: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Button text color */
-    cursor: pointer;
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  cursor: pointer;
 }
 
 .new-message {
-    animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .user-message {
-    animation: fadeIn 0.3s ease-out;
-    align-self: flex-end;
-    background-color: #2c2c2c;
-    color: white;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 5px 0;
-    max-width: 55%;
-    word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+  align-self: flex-end;
+  background-color: #2c2c2c;
+  color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px 0;
+  max-width: 55%;
+  word-wrap: break-word;
 }
 
 .ai-message {
-    animation: fadeIn 0.3s ease-out;
-    align-self: flex-start;
-    background-color: #333333;
-    color: #fff;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 5px 0;
-    max-width: 90%;
-    word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+  align-self: flex-start;
+  background-color: #333333;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px 0;
+  max-width: 90%;
+  word-wrap: break-word;
 }
 
 .top-bar {
-    display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #333;
-    background-color: #1e1e1e;
-    width: 100%;
-    top: 0;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+  background-color: #1e1e1e;
+  width: 100%;
+  top: 0;
 }
 
 .refresh-button {
-    background-color: #1e1e1e; /* Same as background color */
-    border: 1px solid #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin-right: auto; /* Aligns button to the left */
-    font-size: 20px;
+  background-color: #1e1e1e; /* Same as background color */
+  border: 1px solid #333;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: auto; /* Aligns button to the left */
+  font-size: 20px;
 }
 
 .refresh-button:hover {
-    background-color: #333; /* Darker color on hover */
-    border: 1px solid #ffffff;
+  background-color: #333; /* Darker color on hover */
+  border: 1px solid #ffffff;
 }
 
 .version {
-    color: white;
-    font-size: 16px;
-    margin-left: auto; /* Pushes version to the right */
+  color: white;
+  font-size: 16px;
+  margin-left: auto; /* Pushes version to the right */
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 20px;
-    text-align: center; /* Center the text within the logo */
-    padding-top: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  text-align: center; /* Center the text within the logo */
+  padding-top: 20px;
 }
 
 .logo i {
-    font-size: 24px; /* Adjust as needed */
-    margin-right: 10px;
+  font-size: 24px; /* Adjust as needed */
+  margin-right: 10px;
 }
 
 .more-button {
-    background-color: #1e1e1e; /* Same as background color */
-    border: 1px solid #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin-left: auto; /* Aligns button to the right */
-    font-size: 20px;
+  background-color: #1e1e1e; /* Same as background color */
+  border: 1px solid #333;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  margin-left: auto; /* Aligns button to the right */
+  font-size: 20px;
 }
 
 .more-button-overlay {
-    background-color: #1e1e1e; /* Same as background color */
-    border: 1px solid #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin-left: auto; /* Aligns button to the right */
-    font-size: 20px;
+  background-color: #1e1e1e; /* Same as background color */
+  border: 1px solid #333;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  margin-left: auto; /* Aligns button to the right */
+  font-size: 20px;
 }
 
 .more-button-overlay:hover {
-    background-color: #333; /* Darker color on hover */
-    border: 1px solid #ffffff;
+  background-color: #333; /* Darker color on hover */
+  border: 1px solid #ffffff;
 }
 
 .more-button:hover {
-    background-color: #333; /* Darker color on hover */
-    border: 1px solid #ffffff;
+  background-color: #333; /* Darker color on hover */
+  border: 1px solid #ffffff;
 }
 
 .more-menu {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 60px; /* Adjust based on your top-bar height */
-    right: 10px; /* Align with the more button */
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 10px;
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 60px; /* Adjust based on your top-bar height */
+  right: 10px; /* Align with the more button */
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px;
 }
 
 .more-menu button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    text-align: left;
-    width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
 }
 
 .more-menu button:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 .chat-log {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    border-bottom: 1px solid #333;
-    background-color: #1e1e1e;
-    width: 100%;
-    box-sizing: border-box; /* Include padding in width calculation */
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  border-bottom: 1px solid #333;
+  background-color: #1e1e1e;
+  width: 100%;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .user-input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #1e1e1e;
-    width: 100%;
-    box-sizing: border-box; /* Ensure padding is included in width */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #1e1e1e;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .user-input input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background-color: #121212;
-    color: white;
-    margin-right: 10px; /* Space between input and button */
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #121212;
+  color: white;
+  margin-right: 10px; /* Space between input and button */
 }
 
 .send-button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .send-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .version-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
 }
 
 .version-modal-content {
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 400px;
-    color: white;
-    text-align: center;
-    position: relative;
-    z-index: 10001;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 10001;
 }
 
 .version-modal-content .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .choices-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 800px; /* Adjust this as needed */
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto; /* Allow scrolling if content overflows */
-    margin-top: 20px; /* Space from the top-bar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Adjust this as needed */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  margin-top: 20px; /* Space from the top-bar */
 }
 
 .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
-.choices h3, .choices h4 {
-    margin: 0;
-    color: #ffffff;
-    text-align: center;
+.choices h3,
+.choices h4 {
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
 }
 
 .choices button {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .choices button i {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .choices button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Ensure full-screen overlay */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #121212; /* Match the background color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212; /* Match the background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 /* Full-screen modal with padding around the content */
 .modal {
-    background-color: #1e1e1e;
-    padding: 20px; /* Padding around the content */
-    border-radius: 8px; /* Optional: Rounded corners for smooth look */
-    width: calc(100% - 0px); /* Full width minus padding */
-    height: calc(100% - 0px); /* Full height minus padding */
-    max-width: 100%; /* Allow modal to expand fully */
-    max-height: 100%; /* Allow modal to expand fully */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-/*    box-sizing: border-box; !* Include padding in width and height calculations *!*/
+  background-color: #1e1e1e;
+  padding: 20px; /* Padding around the content */
+  border-radius: 8px; /* Optional: Rounded corners for smooth look */
+  width: calc(100% - 0px); /* Full width minus padding */
+  height: calc(100% - 0px); /* Full height minus padding */
+  max-width: 100%; /* Allow modal to expand fully */
+  max-height: 100%; /* Allow modal to expand fully */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  /*    box-sizing: border-box; !* Include padding in width and height calculations *!*/
 }
 
 .model-label {
-    padding: 10px; /* Add some padding around the text */
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    border-top: 1px solid #333; /* Optional: Add a border to separate from the chat log */
-    background-color: #1e1e1e; /* Optional: Background color for better visibility */
-    width: calc(100% - 20px); /* Adjust width to account for padding */
-    margin: 0 auto; /* Center horizontally */
+  padding: 10px; /* Add some padding around the text */
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border-top: 1px solid #333; /* Optional: Add a border to separate from the chat log */
+  background-color: #1e1e1e; /* Optional: Background color for better visibility */
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  margin: 0 auto; /* Center horizontally */
 }
 
 .offline-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #121212;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    color: white;
-    text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+  text-align: center;
 }
 
 .offline-overlay .icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between the icons */
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the icons */
+  margin-bottom: 20px;
 }
 
 .offline-overlay .icons i {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .offline-overlay h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 .offline-overlay p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 /* Splash Screen Styles */
 .splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #121212; /* Match your theme color */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000; /* Ensure it's above other content */
-    color: white;
-    text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212; /* Match your theme color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Ensure it's above other content */
+  color: white;
+  text-align: center;
 }
 
 .splash-screen .splash-content {
-    font-size: 24px;
+  display: flex;
+  flex-direction: column; /* Stack logo and loader vertically */
+  align-items: center; /* Horizontally center items */
+  justify-content: center; /* Vertically center items */
+  gap: 20px; /* Space between the logo and the loader */
+}
+
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid blue;
+  border-right: 10px solid green;
+  border-bottom: 10px solid red;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.splash-logo {
+  width: 80%; /* Scales logo responsively */
+  max-width: 800px; /* Ensures it doesn't get too large on desktops */
+  height: auto; /* Maintains aspect ratio */
 }

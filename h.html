@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="manifest" href="manifest.json"/>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <title>Multi AI</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <script src="https://kit.fontawesome.com/b0efd9a5a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/b0efd9a5a2.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Multi AI"/>
-    <meta property="og:description" content="Aadish's Multi AI Interface. Chat with different AI models based on your needs."/>
-    <meta property="og:url" content="https://aadishsamir123.github.io/Multi-AI"/>
-    <meta property="og:image" content="https://aadishsamir123.github.io/Multi-AI/assets/1024-icon.png"/>
-    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Multi AI" />
+    <meta
+      property="og:description"
+      content="Aadish's Multi AI Interface. Chat with different AI models based on your needs."
+    />
+    <meta
+      property="og:url"
+      content="https://aadishsamir123.github.io/Multi-AI"
+    />
+    <meta
+      property="og:image"
+      content="https://aadishsamir123.github.io/Multi-AI/assets/1024-icon.png"
+    />
+    <meta property="og:type" content="website" />
     <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
     <link rel=”icon” href="./assets/favicon.ico" type=”image/x-icon”>
@@ -31,7 +46,7 @@
         color: white;
         text-align: center;
         z-index: 1000;
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         justify-content: center;
         align-items: center;
       }
@@ -62,7 +77,8 @@
   <body>
     <div id="splashScreen" class="splash-screen">
       <div class="splash-content">
-        <h1>Loading...</h1>
+        <img src="./assets/splash-logo.png" class="splash-logo" />
+        <div class="loader"></div>
       </div>
     </div>
     <div id="overlay" class="overlay">
@@ -118,7 +134,7 @@
               <i class="fas fa-book"></i> Research and Education
             </button>
           </div>
-          <br><br>
+          <br /><br />
           <div class="choices section-fun">
             <h3>--Fun Models--</h3>
             <h4>These models are for fun use.</h4>
@@ -133,69 +149,77 @@
       </div>
     </div>
     <div class="container" id="chatContainer" style="display: none">
-        <div class="top-bar">
-            <button class="refresh-button" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <div class="logo" id="topBarLogo">
-                <i class="fas fa-robot"></i> Multi AI
-            </div>
-            <button class="more-button" onclick="toggleMoreMenu()">
-                <i class="fas fa-ellipsis-v"></i>
-            </button>
+      <div class="top-bar">
+        <button class="refresh-button" onclick="goBack()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="logo" id="topBarLogo">
+          <i class="fas fa-robot"></i> Multi AI
         </div>
-        <div id="moreMenu" class="more-menu">
-            <button onclick="showVersion()">
-                <i class="fas fa-info-circle"></i> Version
-            </button>
-            <button onclick="updateApp()">
-                <i class="fas fa-sync"></i> Update App
-            </button>
-            <button onclick="signOut()">
-                <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
-            </button>
-            <button onclick="passwordReset()">
-                <i class="fas fa-lock"></i> Password Reset
-            </button>
-            <button onclick="changeApiKey()">
-                <i class="fas fa-key"></i> Change Groq API Key
-            </button>
-            <button onclick="openGithub()">
-                <i class="fab fa-github"></i> Open GitHub Page
-            </button>
-        </div>
+        <button class="more-button" onclick="toggleMoreMenu()">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+      <div id="moreMenu" class="more-menu">
+        <button onclick="showVersion()">
+          <i class="fas fa-info-circle"></i> Version
+        </button>
+        <button onclick="updateApp()">
+          <i class="fas fa-sync"></i> Update App
+        </button>
+        <button onclick="signOut()">
+          <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
+        </button>
+        <button onclick="passwordReset()">
+          <i class="fas fa-lock"></i> Password Reset
+        </button>
+        <button onclick="changeApiKey()">
+          <i class="fas fa-key"></i> Change Groq API Key
+        </button>
+        <button onclick="openGithub()">
+          <i class="fab fa-github"></i> Open GitHub Page
+        </button>
+      </div>
 
-        <div id="versionModal" class="version-modal">
-            <div class="version-modal-content">
-                <span class="close" onclick="closeVersionModal()">&times;</span>
-                <h2>Version</h2>
-                <p>v4.1.1.0</p>
-                <button class="rn" onclick="window.location.href = 'rn.html'">Release notes</button>
-            </div>
+      <div id="versionModal" class="version-modal">
+        <div class="version-modal-content">
+          <span class="close" onclick="closeVersionModal()">&times;</span>
+          <h2>Version</h2>
+          <p>v4.1.1.0</p>
+          <button class="rn" onclick="window.location.href = 'rn.html'">
+            Release notes
+          </button>
         </div>
-        <div class="chat-log" id="chatLog">
-            <p>Welcome to Aadish's Multi AI Interface!</p>
-            <p>
-                <strong>NOTICE:</strong> The following content has been automatically
-                generated by an AI system and should be used for informational
-                purposes only. The accuracy, completeness, or timeliness of the
-                information provided is not guaranteed. Any actions taken based on
-                this content are at your own risk. It is recommended to conduct
-                further research to validate and supplement the information provided.
-            </p>
-            <p>Submit feedback at this link:</p>
-            <a href="https://forms.gle/4rGqrrkUnWLZgrnbA">https://forms.gle/4rGqrrkUnWLZgrnbA</a>
-        </div>
-        <div class="model-label" id="modelLabel">llama</div>
-        <div class="user-input">
-            <!-- <button class="voice-button" onclick="showVOverlay()">
+      </div>
+      <div class="chat-log" id="chatLog">
+        <p>Welcome to Aadish's Multi AI Interface!</p>
+        <p>
+          <strong>NOTICE:</strong> The following content has been automatically
+          generated by an AI system and should be used for informational
+          purposes only. The accuracy, completeness, or timeliness of the
+          information provided is not guaranteed. Any actions taken based on
+          this content are at your own risk. It is recommended to conduct
+          further research to validate and supplement the information provided.
+        </p>
+        <p>Submit feedback at this link:</p>
+        <a href="https://forms.gle/4rGqrrkUnWLZgrnbA"
+          >https://forms.gle/4rGqrrkUnWLZgrnbA</a
+        >
+      </div>
+      <div class="model-label" id="modelLabel">llama</div>
+      <div class="user-input">
+        <!-- <button class="voice-button" onclick="showVOverlay()">
                 <i class="fas fa-microphone"></i>
             </button> -->
-            <input type="text" id="userInput" placeholder="Type your message here"/>
-            <button class="send-button" onclick="sendMessage()">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your message here"
+        />
+        <button class="send-button" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Voice Overlay -->
@@ -213,7 +237,10 @@
           <i class="fas fa-exclamation-triangle"></i>
         </div>
         <h1>Error</h1>
-        <p>Please check your internet connection and/or disable any content blockers.</p>
+        <p>
+          Please check your internet connection and/or disable any content
+          blockers.
+        </p>
         <p>If the error is still happening, the server may be down.</p>
       </div>
     </div>
@@ -222,21 +249,17 @@
       let fontAwesomeReloaded = false; // Track if FontAwesome has been reloaded
 
       function reloadFontAwesome() {
-
-
-
-
         // Remove the existing FontAwesome script
-        const oldScript = document.getElementById('fontawesome-script');
+        const oldScript = document.getElementById("fontawesome-script");
         if (oldScript) {
           oldScript.parentNode.removeChild(oldScript);
         }
 
         // Create a new script element with a unique query parameter to force reload
-        const newScript = document.createElement('script');
-        newScript.id = 'fontawesome-script';
+        const newScript = document.createElement("script");
+        newScript.id = "fontawesome-script";
         newScript.src = `https://kit.fontawesome.com/b0efd9a5a2.js?timestamp=$  {new Date().getTime()}`;
-        newScript.crossOrigin = 'anonymous';
+        newScript.crossOrigin = "anonymous";
 
         // Append the new script to the head
         document.head.appendChild(newScript);
@@ -244,49 +267,32 @@
       }
 
       function updateOnlineStatus() {
-        const overlay = document.getElementById('offline-overlay');
+        const overlay = document.getElementById("offline-overlay");
 
         if (navigator.onLine) {
-
-
-
-
           // Try to ping the server to ensure connectivity
-          fetch('https://jsonplaceholder.typicode.com/todos/1', { method: 'HEAD', cache: 'no-cache' })
-            .then(response => {
+          fetch("https://jsonplaceholder.typicode.com/todos/1", {
+            method: "HEAD",
+            cache: "no-cache",
+          })
+            .then((response) => {
               if (response.ok) {
                 if (!fontAwesomeReloaded) {
-
-
-
-
                   // Connection is back, reload FontAwesome if not already reloaded
                   reloadFontAwesome();
                 }
                 // Hide the offline overlay
                 hideOfflineOverlay();
               } else {
-
-
-
-
                 // Server responded with an error status
                 showOfflineOverlay();
               }
             })
             .catch(() => {
-
-
-
-
               // Network error or server not reachable
               showOfflineOverlay();
             });
         } else {
-
-
-
-
           // If offline, display the overlay
           showOfflineOverlay();
           fontAwesomeReloaded = false; // Reset reload flag when going offline
@@ -294,18 +300,18 @@
       }
 
       function showOfflineOverlay() {
-        const overlay = document.getElementById('offline-overlay');
-        overlay.style.display = 'flex';
+        const overlay = document.getElementById("offline-overlay");
+        overlay.style.display = "flex";
         // Trigger a reflow/repaint to ensure opacity transition works
         overlay.offsetHeight; // Read the offsetHeight property
-        overlay.style.opacity = '1';
+        overlay.style.opacity = "1";
       }
 
       function hideOfflineOverlay() {
-        const overlay = document.getElementById('offline-overlay');
-        overlay.style.opacity = '0';
+        const overlay = document.getElementById("offline-overlay");
+        overlay.style.opacity = "0";
         setTimeout(() => {
-          overlay.style.display = 'none';
+          overlay.style.display = "none";
         }, 500); // Match the duration of the opacity transition
       }
 
@@ -313,8 +319,8 @@
       updateOnlineStatus();
 
       // Add event listeners for online/offline events
-      window.addEventListener('online', updateOnlineStatus);
-      window.addEventListener('offline', updateOnlineStatus);
+      window.addEventListener("online", updateOnlineStatus);
+      window.addEventListener("offline", updateOnlineStatus);
 
       // Periodically check connectivity
       setInterval(updateOnlineStatus, CHECK_INTERVAL);
@@ -325,20 +331,16 @@
       function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
+        if (parts.length === 2) return parts.pop().split(";").shift();
       }
 
       // Check if the GROQ API key cookie exists
-      const tempApiKey = getCookie('groqApiKey');
+      const tempApiKey = getCookie("groqApiKey");
 
       // If the cookie does not exist, redirect to enter-api-key.html
       if (!tempApiKey) {
-        window.location.href = 'apikey.html';
+        window.location.href = "apikey.html";
       } else {
-
-
-
-
         //        console.log("API Key from h.html: ", tempApiKey)
       }
     </script>
