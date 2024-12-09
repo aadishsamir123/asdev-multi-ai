@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
                     installingWorker.onstatechange = () => {
                         if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
                             console.log('New content available, page will update.');
-                            alert("There is a new version of the app.")
+                            alert("There is a new version of the app. The app will now update.")
                             window.location.reload()
                         }
                     };
