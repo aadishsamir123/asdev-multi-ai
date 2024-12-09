@@ -381,9 +381,6 @@ function sendMessage() {
     chatHistory.push({ role: "user", content: userInput });
 
     const selectedModel = selectModelBasedOnMessage(userInput);
-    document.getElementById(
-      "modelLabel"
-    ).textContent = `Model: ${selectedModel}`;
 
     fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
