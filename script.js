@@ -4,17 +4,6 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("/pwabuilder-sw.js")
       .then((registration) => {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
-
-        // Listen for the service worker waiting to activate
-        if (registration.waiting) {
-          console.log("New service worker waiting to activate.");
-          // Optionally, you can show a notification or prompt the user to refresh
-        }
-
         // Listen for updates
         registration.onupdatefound = () => {
           const installingWorker = registration.installing;
@@ -26,7 +15,7 @@ if ("serviceWorker" in navigator) {
               ) {
                 console.log("New content available, page will update.");
                 alert(
-                  "There is a new version of the app. The app will now update."
+                  "Please press OK to update to the latest version of the app"
                 );
                 updateApp();
               }
