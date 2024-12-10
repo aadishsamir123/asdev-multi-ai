@@ -24,8 +24,8 @@ a {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #333;
-  border-radius: 4px;
-  background-color: #007bff;
+  border-radius: 20px;
+  background-color: #2e2e2e;
   color: white;
   cursor: pointer;
   display: flex;
@@ -33,6 +33,10 @@ a {
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
+}
+
+.rn:hover {
+  background-color: #2a2a2a;
 }
 
 body,
@@ -64,69 +68,6 @@ body {
   height: 100%;
   margin: 0;
 }
-
-/* Overlay styles
-#voice-overlay {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #121212;
-    color: white;
-    text-align: center;
-    z-index: 10000;
-    font-family: 'Roboto', sans-serif;
-    justify-content: center;
-    align-items: center;
-}
-#voice-overlay .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#voice-overlay h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-#voice-overlay .close-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-.voice-button {
-    background-color: #1e1e1e; 
-    border: 1px solid #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin-right: auto; 
-    font-size: 14px;
-}
-.v-close-button {
-    background-color: #1e1e1e; 
-    border: 1px solid #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px; 
-    width: 40px;   
-    height: 40px;  
-    border-radius: 50%; 
-    font-size: 30px;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-}
-.voice-button:hover {
-    background-color: #333; 
-    border: 1px solid #ffffff;
-} */
 
 #chatContainer {
   display: flex;
@@ -213,8 +154,9 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 20px;
   margin-right: auto; /* Aligns button to the left */
+  margin-left: 12px;
   font-size: 20px;
 }
 
@@ -229,18 +171,36 @@ body {
   margin-left: auto; /* Pushes version to the right */
 }
 
+.main-logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 50px;
+  text-align: center; /* Center the text within the logo */
+  padding-top: 10px;
+}
+
+.main-logo i {
+  display: flex;
+  font-size: 50px; /* Adjust as needed */
+  margin-right: 10px;
+  padding-bottom: 4px;
+}
+
 .logo {
   display: flex;
   align-items: center;
   color: white;
   font-size: 20px;
   text-align: center; /* Center the text within the logo */
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .logo i {
+  display: flex;
   font-size: 24px; /* Adjust as needed */
   margin-right: 10px;
+  padding-bottom: 4px;
 }
 
 .more-button {
@@ -249,8 +209,9 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 20px;
   margin-left: auto; /* Aligns button to the right */
+  margin-right: 12px;
   font-size: 20px;
 }
 
@@ -322,12 +283,15 @@ body {
 
 .user-input input {
   flex: 1;
+  border-radius: 100px;
   padding: 10px;
-  border: 1px solid #333;
-  border-radius: 4px;
+  border: 1px transparent;
+  outline: 1px solid #333; /* Simulate the border look */
   background-color: #121212;
   color: white;
   margin-right: 10px; /* Space between input and button */
+  margin-left: 12px;
+  box-sizing: border-box;
 }
 
 .send-button {
@@ -336,7 +300,8 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50%;
+  margin-right: 12px;
 }
 
 .send-button:hover {
@@ -363,7 +328,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 20px;
   width: 80%;
   max-width: 400px;
   color: white;
@@ -389,7 +354,6 @@ body {
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto; /* Allow scrolling if content overflows */
-  margin-top: 20px; /* Space from the top-bar */
 }
 
 .choices {
@@ -410,7 +374,7 @@ body {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #333;
-  border-radius: 4px;
+  border-radius: 20px;
   background-color: #007bff;
   color: white;
   cursor: pointer;
@@ -427,6 +391,13 @@ body {
 
 .choices button:hover {
   background-color: #0056b3;
+}
+
+.section-fun button {
+  background-color: green;
+}
+.section-fun button:hover {
+  background-color: darkgreen;
 }
 
 /* Ensure full-screen overlay */

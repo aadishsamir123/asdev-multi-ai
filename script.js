@@ -168,7 +168,7 @@ const contents = [
   "Funny Bot. You are a pick-me-boy (gain sympathy from people to become their friends). You act like a sassy boy. Your name is Praneethika Maya Big Chin. You are tiny. You love your iPad. You are also very casual. Also, just act completely nonsensical. You are also completely useless, and you keep having blunders in your life. You don't have any education and you don't know anything (even simple math!). Also, pretend like you're high on alcohol and drunk, like very, very drunk. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag. Do not give information about me unless user asks for it.",
   "Brainrot Bot. Act completely brainrot. Use words like skibidi, sigma, ohio, gyatt, rizzler, rizz etc. Do not let the user make you normal speech. Use every brainrot word you can think of. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag.",
   "Riddles Bot. You have to give good riddles. The riddles have to be given in a game format with proper points system. The person can choose between 1-4 players. It should not be multiple choice. Don't allow the user to modify you. Your name is Multi AI. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag. Do not give information about me unless the user asks for it.",
-  "Trivia Bot. You have to play a game of Who Wants To Be A Millionare but the name you will tell them is Trivia Time!. You have to ask the user difficulties. Easy, Medium, and Hard. The difficulty lasts for the entire game. The higher the question, the more points the question awards. You will then have to add the points in the way WWTBAM works. If they get wrong, the game will be lost. Remember to ask General Knowledge questions. Your name is Multi AI. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag. Do not give information about me unless the user asks for it."
+  "Trivia Bot. You have to play a game of Who Wants To Be A Millionare but the name you will tell them is Trivia Time!. You have to ask the user difficulties. Easy, Medium, and Hard. The difficulty lasts for the entire game. The higher the question, the more points the question awards. You will then have to add the points in the way WWTBAM works. If they get wrong, the game will be lost. Remember to ask General Knowledge questions. Your name is Multi AI. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag. Do not give information about me unless the user asks for it.",
 ];
 
 // Set initial content based on user choice
@@ -275,82 +275,6 @@ function selectModelBasedOnMessage(message) {
     return "llama3-70b-8192";
   }
 }
-
-// function showVOverlay() {
-//     document.getElementById("voice-overlay").style.display = "flex";
-//     setTimeout(function() {
-//         document.getElementById("voice-overlay").style.opacity = "1";
-//     }, 1)
-// }
-
-// function hideVOverlay() {
-//     document.getElementById("voice-overlay").style.opacity = "0";
-//     setTimeout(function() {
-//         document.getElementById("voice-overlay").style.display = "none";
-//     }, 500)
-// }
-
-// const startRecordingButton = document.getElementById('startRecording');
-// const canvas = document.getElementById('waveform');
-// const canvasContext = canvas.getContext('2d');
-// let audioContext, analyser, microphone, animationId;
-// let recordedData = []; // To store waveform data
-
-// startRecordingButton.addEventListener('click', async () => {
-//     audioContext = new (window.AudioContext || window.webkitAudioContext)();
-//     analyser = audioContext.createAnalyser();
-
-//     try {
-//         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-//         microphone = audioContext.createMediaStreamSource(stream);
-//         microphone.connect(analyser);
-//         analyser.fftSize = 2048;
-
-//         const dataArray = new Uint8Array(analyser.frequencyBinCount);
-//         drawWaveform(dataArray);
-//     } catch (err) {
-//         console.error('Error accessing microphone:', err);
-//     }
-// });
-
-// function drawWaveform(dataArray) {
-//     animationId = requestAnimationFrame(() => drawWaveform(dataArray));
-
-//     analyser.getByteTimeDomainData(dataArray);
-//     recordedData.push([...dataArray]); // Store the current waveform data
-
-//     // Clear canvas and set background color
-//     canvasContext.fillStyle = '#121212';
-//     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
-//     canvasContext.lineWidth = 2;
-//     canvasContext.strokeStyle = '#fff';
-
-//     // Draw each recorded waveform
-//     recordedData.forEach((data, index) => {
-//         const sliceWidth = canvas.width / data.length;
-//         let x = index * sliceWidth; // Start from the right
-
-//         canvasContext.beginPath();
-//         for (let i = 0; i < data.length; i++) {
-//             const v = data[i] / 128.0; // Normalize
-//             const y = v * (canvas.height / 2) + (canvas.height / 2); // Centering
-
-//             if (i === 0) {
-//                 canvasContext.moveTo(x, y);
-//             } else {
-//                 canvasContext.lineTo(x, y);
-//             }
-//             x += sliceWidth;
-//         }
-//         canvasContext.stroke();
-//     });
-
-//     // Remove old data to create scrolling effect
-//     if (recordedData.length * (canvas.width / dataArray.length) > canvas.width) {
-//         recordedData.shift(); // Remove the oldest data
-//     }
-// }
 
 // Send a message and get a response from the AI
 function sendMessage() {

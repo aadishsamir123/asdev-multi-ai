@@ -104,8 +104,8 @@
         <h2>Choose Content Type</h2>
         <div class="choices-container">
           <div class="choices section-informative">
-            <h3>--Informative Models--</h3>
-            <h4>These models are for getting information.</h4>
+            <h3>Informative Models</h3>
+            <hr style="width: 100%; border: 1px dashed" />
             <button onclick="setInitialContent(9)">
               <i class="fas fa-robot"></i> AI and Machine Learning
             </button>
@@ -133,8 +133,8 @@
           </div>
           <br /><br />
           <div class="choices section-fun">
-            <h3>--Fun Models--</h3>
-            <h4>These models are for fun use.</h4>
+            <h3>Fun Models</h3>
+            <hr style="width: 100%; border: 1px dashed" />
             <button onclick="setInitialContent(10)">
               <i class="fa fa-female"></i> Funny AI Bot
             </button>
@@ -155,26 +155,92 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v4.3.2.0</p>
+        <p><strong>Version: </strong>v4.4.0.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
         <h2>Contributers</h2>
-        <div style="display: flex; align-items: center; justify-content: center; border-radius: 25px; padding: 10px 20px; background-color: #2e2e2e; width: 300px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <img src="https://i.postimg.cc/L6xfS0L1/71179256.png" alt="Circular Image" style="border-radius: 50%; width: 50px; height: 50px; margin-right: 15px;">
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff;">
-            <span style="font-size: 16px; font-weight: bold;">Developer</span>
-            <span style="font-size: 16px;">Aadish Samir</span>
-            <a style="font-size: 14px; text-decoration: none;" href="https://github.com/aadishsamir123" target="_blank"><i class="fab fa-github"></i> aadishsamir123</a>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px;
+            padding: 10px 20px;
+            background-color: #2e2e2e;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="https://i.postimg.cc/L6xfS0L1/71179256.png"
+            alt="Circular Image"
+            style="
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              margin-right: 15px;
+            "
+          />
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+            "
+          >
+            <span style="font-size: 16px; font-weight: bold">Developer</span>
+            <span style="font-size: 16px">Aadish Samir</span>
+            <a
+              style="font-size: 14px; text-decoration: none"
+              href="https://github.com/aadishsamir123"
+              target="_blank"
+              ><i class="fab fa-github"></i> aadishsamir123</a
+            >
           </div>
         </div>
-        <br>
-        <div style="display: flex; align-items: center; justify-content: center; border-radius: 25px; padding: 10px 20px; background-color: #2e2e2e; width: 300px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <img src="https://i.postimg.cc/Gpfn1rh5/469736130-796558209263618-3786939903949208154-n.jpg" alt="Circular Image" style="border-radius: 50%; width: 50px; height: 50px; margin-right: 15px;">
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff;">
-            <span style="font-size: 16px; font-weight: bold;">Tester/Ideas</span>
-            <span style="font-size: 16px;">Arunaakshi</span>
-            <a style="font-size: 14px; text-decoration: none;" href="https://www.instagram.com/urboo_aru/" target="_blank"><i class="fab fa-instagram"></i> urboo_aru</a>
+        <br />
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 25px;
+            padding: 10px 20px;
+            background-color: #2e2e2e;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <img
+            src="https://i.postimg.cc/Gpfn1rh5/469736130-796558209263618-3786939903949208154-n.jpg"
+            alt="Circular Image"
+            style="
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              margin-right: 15px;
+            "
+          />
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+            "
+          >
+            <span style="font-size: 16px; font-weight: bold">Tester/Ideas</span>
+            <span style="font-size: 16px">Arunaakshi</span>
+            <a
+              style="font-size: 14px; text-decoration: none"
+              href="https://www.instagram.com/urboo_aru/"
+              target="_blank"
+              ><i class="fab fa-instagram"></i> urboo_aru</a
+            >
           </div>
         </div>
       </div>
@@ -216,11 +282,7 @@
           further research to validate and supplement the information provided.
         </p>
       </div>
-      <!-- <div class="model-label" id="modelLabel">llama</div> -->
       <div class="user-input">
-        <!-- <button class="voice-button" onclick="showVOverlay()">
-                <i class="fas fa-microphone"></i>
-            </button> -->
         <input
           type="text"
           id="userInput"
@@ -231,15 +293,6 @@
         </button>
       </div>
     </div>
-
-    <!-- Voice Overlay -->
-    <!-- <div id="voice-overlay">
-        <div class="content">
-            <button class="v-close-button" onclick="hideVOverlay()">&times;</button>
-            <button id="startRecording">Start</button>
-            <canvas id="waveform" width="600" height="200"></canvas>            
-        </div>
-    </div> -->
 
     <div id="offline-overlay">
       <div class="content">
