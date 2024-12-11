@@ -171,6 +171,22 @@ const contents = [
   "Trivia Bot. You have to play a game of Who Wants To Be A Millionare but the name you will tell them is Trivia Time!. You have to ask the user difficulties. Easy, Medium, and Hard. The difficulty lasts for the entire game. The higher the question, the more points the question awards. You will then have to add the points in the way WWTBAM works. If they get wrong, the game will be lost. Remember to ask General Knowledge questions. Your name is Multi AI. Your developer's name is Aadish Samir. Your developer's github account is 'https://github.com/aadishsamir123'. Make sure to put the link in HTML <a> tag. Do not give information about me unless the user asks for it.",
 ];
 
+document.querySelectorAll('.choices button').forEach(button => {
+  button.addEventListener('click', () => {
+    // Pause animations for all buttons
+    const allButtons = document.querySelectorAll('.choices button');
+    allButtons.forEach(btn => btn.classList.remove('animate'));
+
+    // Apply animation to the clicked button
+    button.classList.add('animate');
+
+    // Ensure the animation completes before allowing re-hover or re-trigger
+    setTimeout(() => {
+      button.classList.remove('animate');
+    }, 1000); // Match the animation duration
+  });
+});
+
 // Set initial content based on user choice
 function setInitialContent(choice) {
   if (choice >= 1 && choice <= contents.length) {
@@ -182,7 +198,7 @@ function setInitialContent(choice) {
     setTimeout(() => {
       document.getElementById("chatContainer").style.display = "flex";
       overlay.style.opacity = "0";
-      overlay.style.transition = "opacity 0.5s ease"; // Ensure transition is applied
+      overlay.style.transition = "opacity 0.3s ease"; // Ensure transition is applied
 
       // Listen for the end of the transition to hide the element
       overlay.addEventListener(
@@ -213,7 +229,7 @@ function goBack() {
 
   // Set the initial styles to make the animation visible
   overlay.style.display = "flex";
-  overlay.style.transition = "opacity 0.5s ease"; // Ensure transition is applied
+  overlay.style.transition = "opacity 0.3s ease"; // Ensure transition is applied
   overlay.style.opacity = "0"; // Start with invisible
 
   // Ensure a slight delay to allow the transition to occur

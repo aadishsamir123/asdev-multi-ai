@@ -107,28 +107,52 @@
             <h3>Informative Models</h3>
             <hr style="width: 100%; border: 1px dashed" />
             <button onclick="setInitialContent(9)">
-              <i class="fas fa-robot"></i> AI and Machine Learning
+              <div class="icon-wrapper">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="button-text">AI and Machine Learning</span>
             </button>
             <button onclick="setInitialContent(2)">
-              <i class="fas fa-paint-brush"></i> Answers with Creativity
+              <div class="icon-wrapper">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <span class="button-text">Answers with Creativity</span>
             </button>
             <button onclick="setInitialContent(3)">
-              <i class="fas fa-code"></i> Code and Programming
+              <div class="icon-wrapper">
+                <i class="fas fa-code"></i>
+              </div>
+              <span class="button-text">Code and Programming</span>
             </button>
             <button onclick="setInitialContent(8)">
-              <i class="fas fa-hands-helping"></i> General Assistance
+              <div class="icon-wrapper">
+                <i class="fas fa-hands-helping"></i>
+              </div>
+              <span class="button-text">General Assistance</span>
             </button>
             <button onclick="setInitialContent(6)">
-              <i class="fas fa-heartbeat"></i> Health and Medical Advice
+              <div class="icon-wrapper">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+              <span class="button-text">Health and Medical Advice</span>
             </button>
             <button onclick="setInitialContent(1)">
-              <i class="fas fa-check-circle"></i> Helpful and Concise answers
+              <div class="icon-wrapper">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="button-text">Helpful and Concise Answers</span>
             </button>
             <button onclick="setInitialContent(7)">
-              <i class="fas fa-lightbulb"></i> Innovative Solutions
+              <div class="icon-wrapper">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <span class="button-text">Innovative Solutions</span>
             </button>
             <button onclick="setInitialContent(5)">
-              <i class="fas fa-book"></i> Research and Education
+              <div class="icon-wrapper">
+                <i class="fas fa-book"></i>
+              </div>
+              <span class="button-text">Research and Education</span>
             </button>
           </div>
           <br /><br />
@@ -136,16 +160,28 @@
             <h3>Fun Models</h3>
             <hr style="width: 100%; border: 1px dashed" />
             <button onclick="setInitialContent(10)">
-              <i class="fa fa-female"></i> Funny AI Bot
+              <div class="icon-wrapper-fun">
+                <i class="fas fa-laugh-beam"></i>
+              </div>
+              <span class="button-text">Funny AI Bot</span>
             </button>
             <button onclick="setInitialContent(11)">
-              <i class="fa fa-brain"></i> Brainrot Bot
+              <div class="icon-wrapper-fun">
+                <i class="fas fa-brain"></i>
+              </div>
+              <span class="button-text">Brainrot Bot</span>
             </button>
             <button onclick="setInitialContent(12)">
-              <i class="fa fa-puzzle-piece"></i> Riddles Bot
+              <div class="icon-wrapper-fun">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <span class="button-text">Riddles Bot</span>
             </button>
             <button onclick="setInitialContent(13)">
-              <i class="fa fa-question-circle"></i> Trivia Bot
+              <div class="icon-wrapper-fun">
+                <i class="fas fa-question-circle"></i>
+              </div>
+              <span class="button-text">Trivia Bot</span>
             </button>
           </div>
         </div>
@@ -155,7 +191,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v4.4.0.0.0</p>
+        <p><strong>Version: </strong>v4.5.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
@@ -286,7 +322,7 @@
         <input
           type="text"
           id="userInput"
-          placeholder="Type your message here"
+          placeholder="Send a message"
         />
         <button class="send-button" onclick="sendMessage()">
           <i class="fas fa-paper-plane"></i>

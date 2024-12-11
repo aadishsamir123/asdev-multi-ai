@@ -154,7 +154,7 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 50%;
   margin-right: auto; /* Aligns button to the left */
   margin-left: 12px;
   font-size: 20px;
@@ -221,8 +221,10 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 20px;
   margin-left: auto; /* Aligns button to the right */
+  margin-right: -8px;
+  margin-top: 10px;
   font-size: 20px;
 }
 
@@ -243,7 +245,7 @@ body {
   right: 10px; /* Align with the more button */
   background-color: #1e1e1e;
   border: 1px solid #333;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
@@ -254,6 +256,7 @@ body {
   color: white;
   cursor: pointer;
   padding: 10px;
+  border-radius: 20px;
   text-align: left;
   width: 100%;
 }
@@ -354,6 +357,12 @@ body {
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto; /* Allow scrolling if content overflows */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.choices-container::webkit-scrollbar{
+  display: none; /* For Chrome, Safari, and Edge */
 }
 
 .choices {
@@ -371,26 +380,85 @@ body {
 }
 
 .choices button {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #333;
-  border-radius: 20px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.choices button i {
-  margin-right: 10px;
+  align-items: center; /* Vertically center content */
+  justify-content: flex-start; /* Align items to the left */
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 15px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  width: 100%; /* Optional: set button width */
+  text-align: center;
+  transition: background-color 0.3s ease;
+  animation: none; /* No default animation */
 }
 
 .choices button:hover {
   background-color: #0056b3;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0056b3;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px; /* Space between icon and text */
+}
+
+.icon-wrapper i {
+  font-size: 15px;
+}
+
+.icon-wrapper-fun {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkgreen;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px; /* Space between icon and text */
+}
+
+.icon-wrapper-fun i {
+  font-size: 15px;
+}
+
+.button-text {
+  font-size: 16px;
+  font-weight: bold;
+  flex: 1; /* Ensures the text takes up remaining space */
+  text-align: left; /* Ensure text alignment is left */
+}
+
+.paused-animation * {
+  animation-play-state: paused !important; /* Pauses all animations */
+}
+
+/* Define the custom animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate {
+  animation: pulse 1s ease-in-out; /* Apply animation */
+  animation-play-state: running !important; /* Ensure it runs */
 }
 
 .section-fun button {
