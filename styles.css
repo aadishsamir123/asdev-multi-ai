@@ -148,6 +148,18 @@ body {
   top: 0;
 }
 
+.top-bar-logo i {
+  display: inline-flex; /* Ensure alignment */
+  justify-content: center; /* Center icon horizontally */
+  align-items: center; /* Center icon vertically */
+  width: 40px; /* Set circle size */
+  height: 40px; /* Same as width for a circle */
+  border-radius: 50%; /* Makes it circular */
+  background-color: #2e2e2e; /* Circle background color */
+  color: #fff; /* Icon color */
+  font-size: 20px; /* Icon size */
+}
+
 .refresh-button {
   background-color: #1e1e1e; /* Same as background color */
   border: 1px solid #333;
@@ -361,7 +373,7 @@ body {
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-.choices-container::webkit-scrollbar{
+.choices-container::webkit-scrollbar {
   display: none; /* For Chrome, Safari, and Edge */
 }
 
