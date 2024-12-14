@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "v4.5.2.1";
+const CACHE = "asdev-v4.6.0.0";
 
 // Import Workbox
 importScripts(

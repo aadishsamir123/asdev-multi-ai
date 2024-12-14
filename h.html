@@ -84,21 +84,36 @@
     <div id="overlay" class="overlay">
       <div class="modal">
         <button class="more-button-overlay" onclick="toggleMoreMenu()">
-          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-gear"></i>
         </button>
         <div id="moreMenu1" class="more-menu">
-          <button onclick="showVersion()">
-            <i class="fas fa-info-circle"></i> About
-          </button>
-          <button onclick="signOut()">
-            <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
-          </button>
-          <button onclick="passwordReset()">
-            <i class="fas fa-lock"></i> Password Reset
-          </button>
-          <button onclick="changeApiKey()">
-            <i class="fas fa-key"></i> Change Groq API Key
-          </button>
+          <div class="more-menu-content">
+            <button class="close-btn" onclick="closeMoreMenu()">x</button>
+            <h2>Settings</h2>
+            <hr style="width: 100%; border: 1px dashed" />
+            <h3>Sign Out</h3>
+            <p>Signing out will require you to re-enter your GROQ API Key.</p>
+            <button onclick="signOut()">
+              <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
+            </button>
+            <h3>Reset Password</h3>
+            <p>Reset your password in case you have forgotten it.</p>
+            <button onclick="passwordReset()">
+              <i class="fas fa-lock"></i> Reset Password
+            </button>
+            <h4>Change API Key</h4>
+            <p>
+              If you believe your API Key has been compromised, you can change
+              it.
+            </p>
+            <button onclick="changeApiKey()">
+              <i class="fas fa-key"></i> Change API Key
+            </button>
+            <hr style="width: 100%; border: 1px dashed" />
+            <button onclick="showVersion()">
+              <i class="fas fa-info-circle"></i> About Multi AI
+            </button>
+          </div>
         </div>
         <div class="logo"><i class="fas fa-robot"></i> Multi AI</div>
         <h2>Choose Content Type</h2>
@@ -191,7 +206,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v4.5.2.1</p>
+        <p><strong>Version: </strong>v4.6.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
@@ -290,30 +305,43 @@
           <i class="fas fa-robot"></i> Multi AI
         </div>
         <button class="more-button" onclick="toggleMoreMenu()">
-          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-gear"></i>
         </button>
       </div>
       <div id="moreMenu" class="more-menu">
-        <button onclick="showVersion()">
-          <i class="fas fa-info-circle"></i> About
-        </button>
-        <button onclick="signOut()">
-          <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
-        </button>
-        <button onclick="passwordReset()">
-          <i class="fas fa-lock"></i> Password Reset
-        </button>
-        <button onclick="changeApiKey()">
-          <i class="fas fa-key"></i> Change Groq API Key
-        </button>
+        <div class="more-menu-content">
+          <button class="close-btn" onclick="closeMoreMenu()">x</button>
+          <h2>Settings</h2>
+          <hr style="width: 100%; border: 1px dashed" />
+          <h3>Sign Out</h3>
+          <p>Signing out will require you to re-enter your GROQ API Key.</p>
+          <button onclick="signOut()">
+            <i class="fas fa-arrow-right-from-bracket"></i> Sign Out
+          </button>
+          <h3>Reset Password</h3>
+          <p>Reset your password in case you have forgotten it.</p>
+          <button onclick="passwordReset()">
+            <i class="fas fa-lock"></i> Reset Password
+          </button>
+          <h4>Change API Key</h4>
+          <p>
+            If you believe your API Key has been compromised, you can change it.
+          </p>
+          <button onclick="changeApiKey()">
+            <i class="fas fa-key"></i> Change API Key
+          </button>
+          <hr style="width: 100%; border: 1px dashed" />
+          <button onclick="showVersion()">
+            <i class="fas fa-info-circle"></i> About Multi AI
+          </button>
+        </div>
       </div>
+
       <div class="chat-log" id="chatLog">
         <p>
-          <strong>
-            Welcome to Multi AI!<br />
-            Multi AI can make mistakes. Check important information.
-            <br />Happy chatting!
-          </strong>
+          Welcome to Multi AI!<br />
+          Multi AI can make mistakes. Check important information.
+          <br />Happy chatting!
         </p>
       </div>
       <div class="user-input">

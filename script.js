@@ -71,26 +71,20 @@ setTimeout(() => {
 // Toggle the "More" menu visibility
 function toggleMoreMenu() {
   const moreMenu = document.getElementById("moreMenu");
-  moreMenu.style.display = "block";
+  moreMenu.style.display = "flex";
   const moreMenu1 = document.getElementById("moreMenu1");
-  moreMenu1.style.display = "block";
+  moreMenu1.style.display = "flex";
 }
 
-window.addEventListener("mouseup", function (event) {
-  var menu = document.getElementById("moreMenu");
-  if (event.target != menu && event.target.parentNode != menu) {
-    menu.style.display = "none";
-  }
-});
-window.addEventListener("mouseup", function (event) {
-  var menu1 = document.getElementById("moreMenu1");
-  if (event.target != menu1 && event.target.parentNode != menu1) {
-    menu1.style.display = "none";
-  }
-});
+function closeMoreMenu() {
+  document.getElementById("moreMenu").style.display = "none";
+  document.getElementById("moreMenu1").style.display = "none";
+}
 
 // Show the version modal
 function showVersion() {
+  document.getElementById("moreMenu").style.display = "none";
+  document.getElementById("moreMenu1").style.display = "none";
   document.getElementById("versionModal").style.display = "flex";
 }
 
@@ -120,6 +114,10 @@ function updateApp() {
 // Close the version modal
 function closeVersionModal() {
   document.getElementById("versionModal").style.display = "none";
+  const moreMenu = document.getElementById("moreMenu");
+  moreMenu.style.display = "flex";
+  const moreMenu1 = document.getElementById("moreMenu1");
+  moreMenu1.style.display = "flex";
 }
 
 function changeApiKey() {
@@ -239,11 +237,11 @@ function goBack() {
 
   // Once the overlay animation is done, hide the chatContainer
   setTimeout(() => {
-    chatLog.innerHTML = `<p>Welcome to Multi AI!</p>
-        <p>
-          <strong>Multi AI can make mistakes. Check important information.</strong>
+    chatLog.innerHTML = `<p>
+          Welcome to Multi AI!<br />
+          Multi AI can make mistakes. Check important information.
+          <br />Happy chatting!
         </p>
-        <p>Happy Chatting!</p>
         `;
     chatContainer.style.display = "none";
     chatHistory = [];
