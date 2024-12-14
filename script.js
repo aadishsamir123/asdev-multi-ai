@@ -15,8 +15,9 @@ if ("serviceWorker" in navigator) {
               ) {
                 console.log("New content available, page will update.");
                 alert(
-                  "Please press OK to update to the latest version of the app"
+                  "There's a new version of Multi AI! Make sure to check the Release Notes section to stay updated."
                 );
+                alert("The app will now update to the latest version.");
                 updateApp();
               }
             };
