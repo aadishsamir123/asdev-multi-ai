@@ -564,6 +564,27 @@ body {
   animation-play-state: running !important; /* Ensure it runs */
 }
 
+.section-fun .brainrot-disabled {
+  background-color: grey;
+  color: lightgrey;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+.section-fun .brainrot-disabled:hover {
+  background-color: grey;
+}
+.section-fun .icon-wrapper-br-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgrey;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 15px; /* Space between icon and text */
+}
+
 .section-fun button {
   background-color: green;
 }

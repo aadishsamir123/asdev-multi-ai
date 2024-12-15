@@ -178,13 +178,7 @@
               <div class="icon-wrapper-fun">
                 <i class="fas fa-laugh-beam"></i>
               </div>
-              <span class="button-text">Funny AI Bot</span>
-            </button>
-            <button onclick="setInitialContent(11)">
-              <div class="icon-wrapper-fun">
-                <i class="fas fa-brain"></i>
-              </div>
-              <span class="button-text">Brainrot Bot</span>
+              <span class="button-text">Funny Bot</span>
             </button>
             <button onclick="setInitialContent(12)">
               <div class="icon-wrapper-fun">
@@ -198,6 +192,15 @@
               </div>
               <span class="button-text">Trivia Bot</span>
             </button>
+            <button
+              class="brainrot-disabled"
+              onclick="alert('The Brainrot Bot is no longer available as it could generate potentially inappropriate content.')"
+            >
+              <div class="icon-wrapper-br-disabled">
+                <i class="fas fa-brain"></i>
+              </div>
+              <span class="button-text">Brainrot Bot</span>
+            </button>
           </div>
         </div>
       </div>
@@ -206,7 +209,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v4.7.0.0</p>
+        <p><strong>Version: </strong>v5.0.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
