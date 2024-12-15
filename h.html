@@ -206,7 +206,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v4.6.0.2</p>
+        <p><strong>Version: </strong>v4.7.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
@@ -463,6 +463,19 @@
         window.location.href = "apikey.html";
       } else {
         //        console.log("API Key from h.html: ", tempApiKey)
+      }
+
+      // Set 'isShownReleasedNotes' cookie to 'false' if it doesn't exist
+      if (getCookie("isShownReleasedNotes") === undefined) {
+        document.cookie = "isShownReleasedNotes=false; path=/;";
+      }
+
+      // Check if 'isShownReleasedNotes' is 'false' and open rn.html
+      if (getCookie("isShownReleasedNotes") === "false") {
+        // Set the cookie to 'true' so that release notes are not shown again
+        document.cookie = "isShownReleasedNotes=true; path=/;";
+        // Open rn.html
+        window.location.href = "rn.html";
       }
     </script>
   </body>

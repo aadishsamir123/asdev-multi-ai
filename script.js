@@ -15,9 +15,12 @@ if ("serviceWorker" in navigator) {
               ) {
                 console.log("New content available, page will update.");
                 alert(
-                  "There's a new version of Multi AI! Make sure to check the Release Notes section to stay updated."
+                  "There's a new version of Multi AI! The app will now update."
                 );
-                alert("The app will now update to the latest version.");
+
+                // Set 'isShownReleasedNotes' to 'false' before updating
+                document.cookie = "isShownReleasedNotes=false; path=/;";
+
                 updateApp();
               }
             };
