@@ -18,9 +18,6 @@ if ("serviceWorker" in navigator) {
                   "There's a new version of Multi AI! The app will now update."
                 );
 
-                // Set 'isShownReleasedNotes' to 'false' before updating
-                document.cookie = "isShownReleasedNotes=false; path=/;";
-
                 updateApp();
               }
             };
@@ -192,7 +189,9 @@ document.querySelectorAll(".choices button").forEach((button) => {
 // Set initial content based on user choice
 function setInitialContent(choice) {
   if (choice === 11) {
-    alert("The Brainrot Bot is no longer available as it could generate potentially inappropriate content.");
+    alert(
+      "The Brainrot Bot is no longer available as it could generate potentially inappropriate content."
+    );
     return;
   }
   if (choice >= 1 && choice <= contents.length) {
@@ -429,4 +428,14 @@ function signOut() {
 
 function passwordReset() {
   location.href = "pwrst.html";
+}
+
+function showFeedback() {
+  closeMoreMenu();
+  document.getElementById("feedbackModal").style.display = "flex";
+}
+
+function closeFeedbackModal() {
+  document.getElementById("feedbackModal").style.display = "none";
+  toggleMoreMenu();
 }

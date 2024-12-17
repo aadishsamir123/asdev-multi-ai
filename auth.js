@@ -18,9 +18,6 @@ if ("serviceWorker" in navigator) {
                   "There's a new version of Multi AI! The app will now update."
                 );
 
-                // Set 'isShownReleasedNotes' to 'false' before updating
-                document.cookie = "isShownReleasedNotes=false; path=/;";
-
                 updateApp();
               }
             };

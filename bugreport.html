@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="manifest.json" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Multi AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/b0efd9a5a2.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Multi AI" />
+    <meta
+      property="og:description"
+      content="Aadish's Multi AI Interface. Chat with different AI models based on your needs."
+    />
+    <meta
+      property="og:url"
+      content="https://aadishsamir123.github.io/Multi-AI"
+    />
+    <meta
+      property="og:image"
+      content="https://aadishsamir123.github.io/Multi-AI/assets/1024-icon.png"
+    />
+    <script>
+      navigator.serviceWorker.register("pwabuilder-sw.js");
+    </script>
+    <meta property="og:type" content="website" />
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+    <style>
+      /* Overlay styles */
+      #offline-overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        text-align: center;
+        z-index: 1000;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #offline-overlay .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #offline-overlay .icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between the icons */
+        margin-bottom: 20px;
+      }
+      #offline-overlay .icons i {
+        font-size: 50px;
+      }
+      #offline-overlay h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+      #offline-overlay p {
+        font-size: 18px;
+      }
+      .splash-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #121212; /* Match your theme color */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000; /* Ensure it's above other content */
+        color: white;
+        text-align: center;
+      }
+
+      .splash-screen .splash-content {
+        display: flex;
+        flex-direction: column; /* Stack logo and loader vertically */
+        align-items: center; /* Horizontally center items */
+        justify-content: center; /* Vertically center items */
+        gap: 20px; /* Space between the logo and the loader */
+      }
+
+      .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid blue;
+        border-right: 10px solid green;
+        border-bottom: 10px solid red;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .splash-logo {
+        width: 80%; /* Scales logo responsively */
+        max-width: 800px; /* Ensures it doesn't get too large on desktops */
+        height: auto; /* Maintains aspect ratio */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="splashScreen" class="splash-screen">
+      <div class="splash-content">
+        <img src="./assets/splash-logo.png" class="splash-logo" />
+        <div class="loader"></div>
+      </div>
+    </div>
+    <button class="refresh-button" onclick="goHome()">
+      <i class="fas fa-home"></i>
+    </button>
+    <iframe
+      sandbox="allow-scripts"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe-jluq-lpOEOUdf7E4DFlOeD_g-t5Xk6B0dE_paI19hGHomw/viewform?embedded=true"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      >Loading…</iframe
+    >
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          console.log(
+            "%cWARNING!",
+            "color: red; font-size: 40px; font-weight: bold; background-color: #FFFF00;"
+          );
+          console.log(
+            "%cUsing this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.",
+            "font-size: 16px;"
+          );
+          console.log(
+            "%cDo not enter or paste code that you do not understand.",
+            "font-size: 18px;"
+          );
+        }, 1000);
+      });
+      function goHome() {
+        window.location.href = "index.html";
+      }
+
+      // Splash screen functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show the splash screen
+        const splashScreen = document.getElementById("splashScreen");
+
+        // Ensure fonts are loaded before hiding the splash screen
+        if (document.fonts) {
+          document.fonts.ready.then(function () {
+            window.dispatchEvent(new Event("load"));
+          });
+        }
+
+        // Hide the splash screen after everything is loaded
+        window.addEventListener("load", function () {
+          setTimeout(() => {
+            splashScreen.style.opacity = "0";
+            splashScreen.style.transition = "opacity 0.5s ease";
+            splashScreen.addEventListener("transitionend", () => {
+              splashScreen.style.display = "none";
+            });
+          }, 3000); // Adjust delay as needed
+        });
+      });
+    </script>
+  </body>
+</html>

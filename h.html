@@ -88,7 +88,7 @@
         </button>
         <div id="moreMenu1" class="more-menu">
           <div class="more-menu-content">
-            <button class="close-btn" onclick="closeMoreMenu()">x</button>
+            <button class="close-btn" onclick="closeMoreMenu()">&times;</button>
             <h2>Settings</h2>
             <hr style="width: 100%; border: 1px dashed" />
             <h3>Sign Out</h3>
@@ -101,7 +101,7 @@
             <button onclick="passwordReset()">
               <i class="fas fa-lock"></i> Reset Password
             </button>
-            <h4>Change API Key</h4>
+            <h3>Change API Key</h3>
             <p>
               If you believe your API Key has been compromised, you can change
               it.
@@ -112,6 +112,9 @@
             <hr style="width: 100%; border: 1px dashed" />
             <button onclick="showVersion()">
               <i class="fas fa-info-circle"></i> About Multi AI
+            </button>
+            <button onclick="showFeedback()">
+              <i class="fas fa-comments"></i> Feedback
             </button>
           </div>
         </div>
@@ -209,7 +212,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v5.0.0.0</p>
+        <p><strong>Version: </strong>v5.1.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
@@ -313,7 +316,7 @@
       </div>
       <div id="moreMenu" class="more-menu">
         <div class="more-menu-content">
-          <button class="close-btn" onclick="closeMoreMenu()">x</button>
+          <button class="close-btn" onclick="closeMoreMenu()">&times;</button>
           <h2>Settings</h2>
           <hr style="width: 100%; border: 1px dashed" />
           <h3>Sign Out</h3>
@@ -326,7 +329,7 @@
           <button onclick="passwordReset()">
             <i class="fas fa-lock"></i> Reset Password
           </button>
-          <h4>Change API Key</h4>
+          <h3>Change API Key</h3>
           <p>
             If you believe your API Key has been compromised, you can change it.
           </p>
@@ -336,6 +339,9 @@
           <hr style="width: 100%; border: 1px dashed" />
           <button onclick="showVersion()">
             <i class="fas fa-info-circle"></i> About Multi AI
+          </button>
+          <button onclick="showFeedback()">
+            <i class="fas fa-comments"></i> Feedback
           </button>
         </div>
       </div>
@@ -366,6 +372,19 @@
           blockers.
         </p>
         <p>If the error is still happening, the server may be down.</p>
+      </div>
+    </div>
+    <div id="feedbackModal" class="feedback-modal">
+      <div class="feedback-modal-content">
+        <span class="close" onclick="closeFeedbackModal()">&times;</span>
+        <h2>Feedback</h2>
+        <p>What would you like to report?</p>
+        <button onclick="window.location.href = 'feedback.html'">
+          Feature Request
+        </button>
+        <button onclick="window.location.href= 'bugreport.html'">
+          Bug Report
+        </button>
       </div>
     </div>
     <script>
@@ -466,19 +485,6 @@
         window.location.href = "apikey.html";
       } else {
         //        console.log("API Key from h.html: ", tempApiKey)
-      }
-
-      // Set 'isShownReleasedNotes' cookie to 'false' if it doesn't exist
-      if (getCookie("isShownReleasedNotes") === undefined) {
-        document.cookie = "isShownReleasedNotes=false; path=/;";
-      }
-
-      // Check if 'isShownReleasedNotes' is 'false' and open rn.html
-      if (getCookie("isShownReleasedNotes") === "false") {
-        // Set the cookie to 'true' so that release notes are not shown again
-        document.cookie = "isShownReleasedNotes=true; path=/;";
-        // Open rn.html
-        window.location.href = "rn.html";
       }
     </script>
   </body>
