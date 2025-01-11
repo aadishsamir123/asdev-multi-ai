@@ -52,7 +52,7 @@ function checkAuthAndRedirect() {
         // redirectToPage('home.html');  // Uncomment if you want to redirect to home.html if UID is valid
       } else {
         isRedirecting = true;
-        alert("Authentication Error");
+        showCustomAlert("Authentication Error");
         redirectToPage("index.html"); // Redirect to index.html if UID is invalid
       }
     });
@@ -60,7 +60,7 @@ function checkAuthAndRedirect() {
     if (isRedirecting) return; // Prevent multiple alerts and redirects
 
     isRedirecting = true;
-    alert("Authentication Error");
+    showCustomAlert("Authentication Error");
     redirectToPage("index.html"); // Redirect to index.html if no cookie is found
   }
 }
@@ -122,15 +122,16 @@ function closeVersionModal() {
 }
 
 function changeApiKey() {
-  if (
-    window.confirm(
-      "Are you sure you want to change your API Key? You will not be able to see it again unless you create a new one."
-    )
-  ) {
-    document.cookie =
-      "groqApiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    redirectToPage("index.html");
-  }
+  showCustomConfirm(
+    "Are you sure you want to change your API Key? You will not be able to see it again unless you create a new one.",
+    function (confirmed) {
+      if (confirmed) {
+        document.cookie =
+          "groqApiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        redirectToPage("index.html");
+      }
+    }
+  );
 }
 
 // Add event listener for "Enter" key to send message
@@ -189,7 +190,7 @@ document.querySelectorAll(".choices button").forEach((button) => {
 // Set initial content based on user choice
 function setInitialContent(choice) {
   if (choice === 11) {
-    alert(
+    showCustomAlert(
       "The Brainrot Bot is no longer available as it could generate potentially inappropriate content."
     );
     return;
@@ -221,7 +222,7 @@ function setInitialContent(choice) {
       "topBarLogo"
     ).innerHTML = `<i class="fas fa-robot"></i> ${selectedType}`;
   } else {
-    alert(
+    showCustomAlert(
       "This model is still a work in progress. Please check out the other models in the meantime!"
     );
   }
@@ -414,16 +415,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function signOut() {
-  if (
-    window.confirm(
-      "Are you sure you want to sign out? You will have to enter your GROQ API Key again."
-    )
-  ) {
-    document.cookie = "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Delete the cookie
-    document.cookie =
-      "groqApiKey=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Delete the cookie
-    redirectToPage("index.html");
-  }
+  showCustomConfirm(
+    "Are you sure you want to sign out? You will have to enter your GROQ API Key again.",
+    function (confirmed) {
+      if (confirmed) {
+        document.cookie =
+          "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Delete the cookie
+        document.cookie =
+          "groqApiKey=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Delete the cookie
+        redirectToPage("index.html");
+      }
+    }
+  );
 }
 
 function passwordReset() {
@@ -438,4 +441,30 @@ function showFeedback() {
 function closeFeedbackModal() {
   document.getElementById("feedbackModal").style.display = "none";
   toggleMoreMenu();
+}
+
+function showCustomAlert(message) {
+  const alertModal = document.getElementById("customAlertModal");
+  const alertText = document.getElementById("customAlertText");
+  alertText.textContent = message;
+  alertModal.style.display = "flex";
+}
+
+function hideCustomAlert() {
+  document.getElementById("customAlertModal").style.display = "none";
+}
+
+let confirmCallback = null;
+
+function showCustomConfirm(message, callback) {
+  const confirmModal = document.getElementById("customConfirmModal");
+  const confirmText = document.getElementById("customConfirmText");
+  confirmText.textContent = message;
+  confirmCallback = callback;
+  confirmModal.style.display = "flex";
+}
+
+function handleConfirm(confirmed) {
+  document.getElementById("customConfirmModal").style.display = "none";
+  if (confirmCallback) confirmCallback(confirmed);
 }

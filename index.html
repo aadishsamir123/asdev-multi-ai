@@ -49,6 +49,7 @@
     </div>
     <div id="content_container">
       <div id="form_header_container">
+        <div class="logo"><i class="fas fa-robot"></i> Multi AI</div>
         <h2 id="form_header">Login/Register</h2>
       </div>
 
@@ -78,6 +79,28 @@
               <i class="fab fa-google"></i>&nbsp;Sign in with Google
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+    <div id="customAlertModal" class="custom-modal" style="display: none">
+      <div class="custom-modal-content">
+        <span id="customAlertText"></span>
+        <button class="custom-modal-button" onclick="hideCustomAlert()">
+          OK
+        </button>
+      </div>
+    </div>
+
+    <div id="customConfirmModal" class="custom-modal" style="display: none">
+      <div class="custom-modal-content">
+        <span id="customConfirmText"></span>
+        <div>
+          <button class="custom-modal-button" onclick="handleConfirm(true)">
+            Yes
+          </button>
+          <button class="custom-modal-button" onclick="handleConfirm(false)">
+            No
+          </button>
         </div>
       </div>
     </div>

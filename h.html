@@ -212,7 +212,7 @@
       <div class="version-modal-content">
         <span class="close" onclick="closeVersionModal()">&times;</span>
         <h2>About Multi AI</h2>
-        <p><strong>Version: </strong>v5.1.0.0</p>
+        <p><strong>Version: </strong>v6.0.0.0</p>
         <button class="rn" onclick="window.location.href = 'rn.html'">
           Release notes
         </button>
@@ -385,6 +385,28 @@
         <button onclick="window.location.href= 'bugreport.html'">
           Bug Report
         </button>
+      </div>
+    </div>
+    <div id="customAlertModal" class="custom-modal" style="display: none">
+      <div class="custom-modal-content">
+        <span id="customAlertText"></span>
+        <button class="custom-modal-button" onclick="hideCustomAlert()">
+          OK
+        </button>
+      </div>
+    </div>
+
+    <div id="customConfirmModal" class="custom-modal" style="display: none">
+      <div class="custom-modal-content">
+        <span id="customConfirmText"></span>
+        <div>
+          <button class="custom-modal-button" onclick="handleConfirm(true)">
+            Yes
+          </button>
+          <button class="custom-modal-button" onclick="handleConfirm(false)">
+            No
+          </button>
+        </div>
       </div>
     </div>
     <script>

@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "asdev-multiai-v5.1.0.0";
+const CACHE = "asdev-multiai-v6.0.0.0";
 
 // Import Workbox
 importScripts(

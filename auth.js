@@ -257,3 +257,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1500); // Adjust delay as needed
   });
 });
+function showCustomAlert(message) {
+  const alertModal = document.getElementById("customAlertModal");
+  const alertText = document.getElementById("customAlertText");
+  alertText.textContent = message;
+  alertModal.style.display = "flex";
+}
+
+function hideCustomAlert() {
+  document.getElementById("customAlertModal").style.display = "none";
+}
+
+let confirmCallback = null;
+
+function showCustomConfirm(message, callback) {
+  const confirmModal = document.getElementById("customConfirmModal");
+  const confirmText = document.getElementById("customConfirmText");
+  confirmText.textContent = message;
+  confirmCallback = callback;
+  confirmModal.style.display = "flex";
+}
+
+function handleConfirm(confirmed) {
+  document.getElementById("customConfirmModal").style.display = "none";
+  if (confirmCallback) confirmCallback(confirmed);
+}
