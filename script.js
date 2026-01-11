@@ -271,28 +271,28 @@ function selectModelBasedOnMessage(message) {
     lowerMessage.includes("fast")
   ) {
     // Fast response needed - use smaller model
-    return "gemma2-9b-it";
+    return "llama-3.1-8b-instant";
   } else if (
     ["code", "programming", "debug", "script", "python", "javascript", "java", "function"].some((word) =>
       lowerMessage.includes(word)
     )
   ) {
     // Code generation and debugging - use powerful model
-    return "llama-3.1-70b-versatile";
+    return "llama-3.3-70b-versatile";
   } else if (
     ["support", "help", "customer", "service", "issue", "problem"].some((word) =>
       lowerMessage.includes(word)
     )
   ) {
     // Support queries - balanced model
-    return "gemma2-9b-it";
+    return "llama-3.1-8b-instant";
   } else if (
     ["research", "study", "learn", "education", "explain", "analyze"].some((word) =>
       lowerMessage.includes(word)
     )
   ) {
     // Educational content - informative model
-    return "llama-3.1-70b-versatile";
+    return "llama-3.3-70b-versatile";
   } else if (
     ["health", "medical", "doctor", "medicine", "symptom", "disease"].some((word) =>
       lowerMessage.includes(word)
@@ -302,7 +302,7 @@ function selectModelBasedOnMessage(message) {
     return "llama-3.1-8b-instant";
   } else {
     // Default - powerful general purpose model
-    return "llama-3.1-70b-versatile";
+    return "llama-3.3-70b-versatile";
   }
 }
 
