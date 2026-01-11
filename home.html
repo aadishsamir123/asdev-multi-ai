@@ -91,6 +91,20 @@
             <button class="close-btn" onclick="closeMoreMenu()">&times;</button>
             <h2>Settings</h2>
             <hr style="width: 100%; border: 1px dashed" />
+            <h3>Chat Management</h3>
+            <button onclick="clearChatHistory()">
+              <i class="fas fa-trash"></i> Clear Chat History
+            </button>
+            <button onclick="exportChat()">
+              <i class="fas fa-download"></i> Export as Text
+            </button>
+            <button onclick="exportChatJSON()">
+              <i class="fas fa-file-export"></i> Export as JSON
+            </button>
+            <button onclick="showKeyboardShortcuts()">
+              <i class="fas fa-keyboard"></i> Keyboard Shortcuts
+            </button>
+            <hr style="width: 100%; border: 1px dashed" />
             <h3>Sign Out</h3>
             <p>Signing out will require you to re-enter your GROQ API Key.</p>
             <button onclick="signOut()">
@@ -319,6 +333,20 @@
           <button class="close-btn" onclick="closeMoreMenu()">&times;</button>
           <h2>Settings</h2>
           <hr style="width: 100%; border: 1px dashed" />
+          <h3>Chat Management</h3>
+          <button onclick="clearChatHistory()">
+            <i class="fas fa-trash"></i> Clear Chat History
+          </button>
+          <button onclick="exportChat()">
+            <i class="fas fa-download"></i> Export as Text
+          </button>
+          <button onclick="exportChatJSON()">
+            <i class="fas fa-file-export"></i> Export as JSON
+          </button>
+          <button onclick="showKeyboardShortcuts()">
+            <i class="fas fa-keyboard"></i> Keyboard Shortcuts
+          </button>
+          <hr style="width: 100%; border: 1px dashed" />
           <h3>Sign Out</h3>
           <p>Signing out will require you to re-enter your GROQ API Key.</p>
           <button onclick="signOut()">
@@ -354,8 +382,8 @@
         </p>
       </div>
       <div class="user-input">
-        <input type="text" id="userInput" placeholder="Send a message" />
-        <button class="send-button" onclick="sendMessage()">
+        <input type="text" id="userInput" placeholder="Ask me anything... (Ctrl+? for shortcuts)" />
+        <button class="send-button" onclick="sendMessage()" title="Send message (or press Enter)">
           <i class="fas fa-paper-plane"></i>
         </button>
       </div>

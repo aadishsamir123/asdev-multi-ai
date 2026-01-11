@@ -153,6 +153,8 @@ function refreshPage() {
 const apiKey = getCookie("groqApiKey"); // Retrieve the API key from the cookie
 //console.log("API Key from script.js:", apiKey)
 var chatHistory = [];
+var lastResponseModel = null; // Track the model used for last response
+var messageHistory = []; // Track messages for local storage
 
 // Content choices
 const contents = [
@@ -258,39 +260,49 @@ function goBack() {
 
 // Select AI model based on the user's message content
 function selectModelBasedOnMessage(message) {
+  const lowerMessage = message.toLowerCase();
+  
+  // For complex reasoning tasks with longer context
   if (message.length > 500) {
-    return "llama-3.1-405b-reasoning";
+    return "llama-3.3-70b-versatile";
   } else if (
-    message.toLowerCase().includes("urgent") ||
-    message.toLowerCase().includes("quick")
+    lowerMessage.includes("urgent") ||
+    lowerMessage.includes("quick") ||
+    lowerMessage.includes("fast")
   ) {
-    return "llama3-groq-8b-8192-tool-use-preview";
-  } else if (
-    ["code", "programming", "debug", "script"].some((word) =>
-      message.toLowerCase().includes(word)
-    )
-  ) {
-    return "mixtral-8x7b-32768";
-  } else if (
-    ["support", "help", "customer", "service"].some((word) =>
-      message.toLowerCase().includes(word)
-    )
-  ) {
-    return "llama-3.1-8b-instant";
-  } else if (
-    ["research", "study", "learn", "education"].some((word) =>
-      message.toLowerCase().includes(word)
-    )
-  ) {
+    // Fast response needed - use smaller model
     return "gemma2-9b-it";
   } else if (
-    ["health", "medical", "doctor", "medicine"].some((word) =>
-      message.toLowerCase().includes(word)
+    ["code", "programming", "debug", "script", "python", "javascript", "java", "function"].some((word) =>
+      lowerMessage.includes(word)
     )
   ) {
-    return "gemma-7b-it";
+    // Code generation and debugging - use powerful model
+    return "llama-3.1-70b-versatile";
+  } else if (
+    ["support", "help", "customer", "service", "issue", "problem"].some((word) =>
+      lowerMessage.includes(word)
+    )
+  ) {
+    // Support queries - balanced model
+    return "gemma2-9b-it";
+  } else if (
+    ["research", "study", "learn", "education", "explain", "analyze"].some((word) =>
+      lowerMessage.includes(word)
+    )
+  ) {
+    // Educational content - informative model
+    return "llama-3.1-70b-versatile";
+  } else if (
+    ["health", "medical", "doctor", "medicine", "symptom", "disease"].some((word) =>
+      lowerMessage.includes(word)
+    )
+  ) {
+    // Medical queries - capable model
+    return "llama-3.1-8b-instant";
   } else {
-    return "llama3-70b-8192";
+    // Default - powerful general purpose model
+    return "llama-3.1-70b-versatile";
   }
 }
 
@@ -300,10 +312,23 @@ function sendMessage() {
   if (userInput.trim()) {
     const chatLog = document.getElementById("chatLog");
 
-    // Add user message with animation
+    // Add user message with animation and timestamp
     const userMessageDiv = document.createElement("div");
     userMessageDiv.classList.add("user-message", "new-message");
-    userMessageDiv.innerHTML = userInput.replace(/\n/g, "<br>");
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    userMessageDiv.innerHTML = `<div class="message-content">${userInput.replace(/\n/g, "<br>")}</div><div class="message-timestamp">${timestamp}</div>`;
+    userMessageDiv.title = `Sent at ${new Date().toLocaleString()}`;
+    
+    // Add copy button for user messages
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "message-action-btn copy-btn";
+    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+    copyBtn.onclick = () => {
+      navigator.clipboard.writeText(userInput);
+      showCustomAlert("Message copied to clipboard!");
+    };
+    userMessageDiv.appendChild(copyBtn);
+    
     chatLog.appendChild(userMessageDiv);
     document.getElementById("userInput").value = "";
 
@@ -320,6 +345,7 @@ function sendMessage() {
     chatLog.appendChild(typingIndicatorDiv);
 
     const selectedModel = selectModelBasedOnMessage(userInput);
+    lastResponseModel = selectedModel; // Store for potential regeneration
 
     // Send the user message to the API
     fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -331,8 +357,8 @@ function sendMessage() {
       body: JSON.stringify({
         model: selectedModel,
         messages: chatHistory,
-        max_tokens: 1000,
-        temperature: 1.2,
+        max_tokens: 1024,
+        temperature: 0.9,
       }),
     })
       .then((response) => {
@@ -351,10 +377,40 @@ function sendMessage() {
         // Remove typing indicator
         chatLog.removeChild(typingIndicatorDiv);
 
-        // Add AI response with animation
+        // Add AI response with animation and timestamp
         const aiMessageDiv = document.createElement("div");
         aiMessageDiv.classList.add("ai-message", "new-message");
-        aiMessageDiv.innerHTML = assistantMessage.replace(/\n/g, "<br>");
+        const responseTimestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        aiMessageDiv.innerHTML = `<div class="message-content">${assistantMessage.replace(/\n/g, "<br>")}</div><div class="message-timestamp">${responseTimestamp}</div>`;
+        aiMessageDiv.title = `Received at ${new Date().toLocaleString()}`;
+        
+        // Add action buttons for AI messages
+        const actionsDiv = document.createElement("div");
+        actionsDiv.className = "message-actions";
+        
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "message-action-btn copy-btn";
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+        copyBtn.title = "Copy message";
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(assistantMessage);
+          showCustomAlert("Message copied to clipboard!");
+        };
+        
+        const shareBtn = document.createElement("button");
+        shareBtn.className = "message-action-btn share-btn";
+        shareBtn.innerHTML = '<i class="fas fa-share-alt"></i>';
+        shareBtn.title = "Copy with model info";
+        shareBtn.onclick = () => {
+          const modelInfo = `[Model: ${selectedModel}]\n${assistantMessage}`;
+          navigator.clipboard.writeText(modelInfo);
+          showCustomAlert("Message with model info copied!");
+        };
+        
+        actionsDiv.appendChild(copyBtn);
+        actionsDiv.appendChild(shareBtn);
+        aiMessageDiv.appendChild(actionsDiv);
+        
         chatLog.appendChild(aiMessageDiv);
 
         aiMessageDiv.addEventListener("animationend", () => {
@@ -412,6 +468,109 @@ document.addEventListener("DOMContentLoaded", function () {
       "font-size: 18px;"
     );
   }, 1000);
+});
+
+// ===== QOL FEATURES =====
+
+// Clear chat history with confirmation
+function clearChatHistory() {
+  showCustomConfirm(
+    "Are you sure you want to clear the chat history? This action cannot be undone.",
+    function (confirmed) {
+      if (confirmed) {
+        const chatLog = document.getElementById("chatLog");
+        chatLog.innerHTML = `<p>
+          Chat cleared. Start a new conversation!<br />
+          Multi AI can make mistakes. Check important information.
+        </p>`;
+        chatHistory = [];
+        showCustomAlert("Chat history cleared successfully!");
+      }
+    }
+  );
+}
+
+// Export chat as text file
+function exportChat() {
+  if (chatHistory.length === 0) {
+    showCustomAlert("No chat history to export!");
+    return;
+  }
+  
+  let exportText = "Multi AI Chat Export\n";
+  exportText += "=====================\n";
+  exportText += `Exported: ${new Date().toLocaleString()}\n\n`;
+  
+  chatHistory.forEach((msg, index) => {
+    const role = msg.role === "user" ? "You" : "Multi AI";
+    exportText += `[${role}]\n${msg.content}\n\n`;
+  });
+  
+  const blob = new Blob([exportText], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `MultiAI_Chat_${new Date().getTime()}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showCustomAlert("Chat exported successfully!");
+}
+
+// Export chat as JSON (for more structured data)
+function exportChatJSON() {
+  if (chatHistory.length === 0) {
+    showCustomAlert("No chat history to export!");
+    return;
+  }
+  
+  const exportData = {
+    exported: new Date().toISOString(),
+    conversation: chatHistory
+  };
+  
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `MultiAI_Chat_${new Date().getTime()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showCustomAlert("Chat exported as JSON successfully!");
+}
+
+// Show keyboard shortcuts
+function showKeyboardShortcuts() {
+  const shortcuts = `
+📋 Keyboard Shortcuts:\n\n
+Enter - Send message\n
+Ctrl+L or Cmd+L - Clear chat\n
+Ctrl+E or Cmd+E - Export chat\n\n
+💡 Tips:\n
+• Click the copy icon to copy messages\n
+• Longer messages use more powerful models\n
+• Messages with "code" keyword route to code specialist\n
+• Check developer link: <a href="https://github.com/aadishsamir123" target="_blank">@aadishsamir123</a>
+  `;
+  showCustomAlert(shortcuts);
+}
+
+// Add keyboard shortcut listeners
+document.addEventListener("keydown", function (e) {
+  // Ctrl+L or Cmd+L to clear chat
+  if ((e.ctrlKey || e.metaKey) && e.key === "l") {
+    e.preventDefault();
+    clearChatHistory();
+  }
+  // Ctrl+E or Cmd+E to export chat
+  if ((e.ctrlKey || e.metaKey) && e.key === "e") {
+    e.preventDefault();
+    exportChat();
+  }
+  // Ctrl+? or Cmd+? to show help
+  if ((e.ctrlKey || e.metaKey) && e.key === "?") {
+    e.preventDefault();
+    showKeyboardShortcuts();
+  }
 });
 
 function signOut() {
